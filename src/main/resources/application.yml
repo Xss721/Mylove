@@ -1,2 +1,17 @@
+
 spring:
-  port: 8080
+  server:
+    port: 8080
+  #------------------------MySql-----------------------------
+  datasource:
+    url: jdbc:mysql://localhost:3306/lovexj?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+  type-aliases-package: com.xss.pojo.user
+  global-config:
+    refresh-mapper: true
