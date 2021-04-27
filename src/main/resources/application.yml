@@ -9,7 +9,10 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-
+#  mvc:
+#    static-path-pattern: /res/**  #静态资源访问路径前缀
+#  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 mybatis-plus:
   mapper-locations: classpath:mapper/*/*Mapper.xml
   type-aliases-package: com.xss.pojo.user

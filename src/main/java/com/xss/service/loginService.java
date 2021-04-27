@@ -4,11 +4,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
-public class loginService {
 
-
-    public String login(){
-    return "";
-    }
+public interface loginService {
+    public String login(String username);
 }
