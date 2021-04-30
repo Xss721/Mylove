@@ -19,7 +19,7 @@ public class loginServiceImpl implements loginService {
     }
 
     public boolean AddNewUser(String username, String password) {
-        if (logDao.selectPasswordByUsername(username).equals(null) || password.equals(null)) return false;
+        if (null==username||logDao.selectByUsername(username)!=null|| password.equals(null)) return false;
         logDao.insertOneUser(username, passwordUtil.encode(password));//对密码进行加密存储
         return true;
     }

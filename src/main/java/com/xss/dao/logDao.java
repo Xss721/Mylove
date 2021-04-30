@@ -14,6 +14,10 @@ import org.springframework.stereotype.Repository;
 public interface logDao extends BaseMapper<user> {
     @Select(value = "select password from user where username = #{username}")
     String selectPasswordByUsername(String username);
+
+    @Select(value = "select userid from user where username = #{username}")
+    Integer selectByUsername(String username);
+
     @Insert("insert into user(username , password) values(#{username},#{password})")
     void insertOneUser(String username,String password);
 }
