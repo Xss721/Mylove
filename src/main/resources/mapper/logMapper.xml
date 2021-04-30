@@ -1,0 +1,57 @@
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<!DOCTYPE mapper-->
+<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+<!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!--&lt;!&ndash; namespace:填写映射当前的Mapper接口，所有的增删改查的参数和返回值类型，-->
+<!--		就可以直接填写缩写，不区分大小写，直接通过方法名去找类型&ndash;&gt;-->
+<!--<mapper namespace="com.itheima.mapper.UserMapper">-->
+<!--    &lt;!&ndash; sql:里面可以写入一个共同的sql代码，用于提取重复的代码。-->
+<!--        要使用该代码的时候就直接使用<include>标签-->
+<!--        id:为提取的sql代码，取一个id，起标识作用-->
+<!--         &ndash;&gt;-->
+<!--    <sql id="select">-->
+<!--        select * from user-->
+<!--    </sql>-->
+<!--    &lt;!&ndash; public User findUserById(int id);-->
+<!--        id:填写在XxxMapper接口中的方法名-->
+<!--        parameterType:填写参数的类型-->
+<!--        resultType:填写方法中返回值的类型，不用写全路径，不区分大小写-->
+<!--    &ndash;&gt;-->
+
+<!--    &lt;!&ndash; resultMap属性:与resultMap标签一起使用，填写resultMap标签中定义的id属性 &ndash;&gt;-->
+
+<!--    &lt;!&ndash; resultMap标签:用于自定义封装结果-->
+<!--        type:最终结果还是封装到实体类中，type就是指定封装到哪一个类中-->
+<!--        id:与<select>标签中的resultMap中的属性一直，一定要唯一-->
+<!--        <id>:该标签是指定主键封装到实体类中的哪一个属性(可以省略)-->
+<!--        <result>:该标签是其他的列封装到实体类中，一般只需填写实体类中的属性与表中列不同的项即可-->
+<!--            property:填写实体类中的属性，column:填写表中的列名-->
+<!--     &ndash;&gt;-->
+
+<!--    &lt;!&ndash;  public void addUser(User user);-->
+<!--        insert:用于执行添加语句；update:执行更新语句-->
+<!--       同样 delete:执行删除语句-->
+<!--     &ndash;&gt;-->
+<!--    &lt;!&ndash; public List<User> findUserBySexAndUsername(User user); &ndash;&gt;-->
+<!--    <select id="findUserBySexAndUsername" parameterType="User" resultType="user">-->
+<!--        &lt;!&ndash;select * from user  where 1=1 &ndash;&gt;-->
+<!--        <include refid="select"></include>-->
+<!--        &lt;!&ndash; where标签:一个where条件语句，通常和<if>标签混合使用 &ndash;&gt;-->
+<!--        <where>-->
+<!--            &lt;!&ndash; if标签:执行一个判断语句，成立才会执行标签体内的sql语句-->
+<!--                test:写上条件判断语句-->
+<!--                注意:这里每一个if前面都尽量加上and，如果你是第一个条件，框架会自动帮你把and截取，如果是第二个if就不能省略and-->
+<!--             &ndash;&gt;-->
+<!--            <if test="sex != null and sex != ''">-->
+<!--                and sex = #{sex}-->
+<!--            </if>-->
+<!--            <if test="username != null and username != ''">-->
+<!--                and username like '%${username}%'-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; public List<User> findUserByIds(QueryVo vo); &ndash;&gt;-->
+<!--    &lt;!&ndash; QueryVo:是一个实体包装类，通常用于封装实体类之外的一些属性&ndash;&gt;-->
+
+<!--</mapper>-->

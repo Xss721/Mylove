@@ -6,5 +6,5 @@ import javax.annotation.Resource;
 
 
 public interface loginService {
-    public String login(String username);
+
 }
