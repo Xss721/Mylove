@@ -23,4 +23,8 @@ public class loginServiceImpl implements loginService {
         logDao.insertOneUser(username, passwordUtil.encode(password));//对密码进行加密存储
         return true;
     }
+
+    public int selectByUsername(String username) {
+        return logDao.selectByUsername(username);
+    }
 }

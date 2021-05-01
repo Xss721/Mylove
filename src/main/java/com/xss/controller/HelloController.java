@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.jar.Attributes;
+
 
 @Slf4j
 @Controller
 public class HelloController {
     @Autowired
     private loginServiceImpl loginService;
+
     // 未登录者提示登录
     @GetMapping(value = {"/", "/login"})
     public String loginPage() {
@@ -29,17 +30,28 @@ public class HelloController {
                                @RequestParam String password,
                                HttpSession session,
                                RedirectAttributes attributes) {
-        if (loginService.selectPasswordByUsername(username,password)) return "index";
+
+        if (loginService.selectPasswordByUsername(username, password)) {
+            session.setAttribute(String.valueOf(loginService.selectByUsername(username)),username);
+            return "index";
+        }
         else return "redirect:/login/log";
     }
 
     @PostMapping(value = "/login/addUser")
     public String logAddUser(@RequestParam("username") String username,
-                               @RequestParam("password") String password,
+                             @RequestParam("password") String password,
                              @RequestParam("password2") String password2,
-                               HttpSession session,
-                                RedirectAttributes attributes) {
-        if (password2.equals(password)&&loginService.AddNewUser(username, password)) return "index";
-        else return "redirect:/login";
+                             HttpSession session,
+                             RedirectAttributes attributes) {
+        if (password2.equals(password) && loginService.AddNewUser(username, password)) {
+
+            return "index";
+        } else return "redirect:/login";
+    }
+
+    @GetMapping("/index")
+    public String returnindex() {
+        return "index";
     }
 }

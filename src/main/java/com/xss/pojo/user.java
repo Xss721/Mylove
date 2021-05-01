@@ -21,4 +21,8 @@ public class user {
     private String userNickname;
     private int spouseId;
 
+    public user(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
