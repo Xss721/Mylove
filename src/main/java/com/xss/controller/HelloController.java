@@ -30,24 +30,30 @@ public class HelloController {
                                @RequestParam String password,
                                HttpSession session,
                                RedirectAttributes attributes) {
-
-        if (loginService.selectPasswordByUsername(username, password)) {
-            session.setAttribute(String.valueOf(loginService.selectByUsername(username)),username);
-            return "index";
+        if (!loginService.logCheck(username, password)) {
+            attributes.addFlashAttribute("msg", "用户名或密码错误");
+            return "redirect:/login";
+        } else {
+            session.setAttribute("user", username);
+            return "redirect:/index";
         }
-        else return "redirect:/login/log";
     }
 
+    //  user 注册界面
     @PostMapping(value = "/login/addUser")
     public String logAddUser(@RequestParam("username") String username,
                              @RequestParam("password") String password,
                              @RequestParam("password2") String password2,
                              HttpSession session,
                              RedirectAttributes attributes) {
-        if (password2.equals(password) && loginService.AddNewUser(username, password)) {
-
-            return "index";
-        } else return "redirect:/login";
+//        System.out.println(String.valueOf(loginService.selectByUsername(username)));
+        if (loginService.selectByUsername(username)!=0 || !password2.equals(password)) {
+            attributes.addFlashAttribute("msg", "密码不一致或用户名不可用");
+        } else {
+            loginService.AddNewUser(username, password);
+            attributes.addFlashAttribute("msg", "注册成功，请登录");
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/index")
