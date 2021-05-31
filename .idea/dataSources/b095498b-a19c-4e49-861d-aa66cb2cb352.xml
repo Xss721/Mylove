@@ -777,32 +777,65 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="233" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="234" parent="3" name="user"/>
-    <column id="235" parent="234" name="userid">
+    <table id="234" parent="3" name="anniversary"/>
+    <table id="235" parent="3" name="user"/>
+    <column id="236" parent="234" name="anniversaryid">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="237" parent="234" name="userid">
+      <Position>2</Position>
+      <DataType>bigint(20)|0s</DataType>
+    </column>
+    <column id="238" parent="234" name="anniversarytime">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="239" parent="234" name="anniversarytext">
+      <Position>4</Position>
+      <DataType>longtext|0s</DataType>
+    </column>
+    <column id="240" parent="234" name="anniversaryhide">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0s</DataType>
+    </column>
+    <column id="241" parent="234" name="anniversaryname">
+      <Position>6</Position>
+      <DataType>char(100)|0s</DataType>
+    </column>
+    <key id="242" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>anniversaryid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="243" parent="235" name="userid">
       <Position>1</Position>
       <DataType>bigint(10)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="236" parent="234" name="username">
+    <column id="244" parent="235" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <Collation>latin1_swedish_ci</Collation>
     </column>
-    <column id="237" parent="234" name="password">
+    <column id="245" parent="235" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <Collation>latin1_swedish_ci</Collation>
     </column>
-    <column id="238" parent="234" name="usernickname">
+    <column id="246" parent="235" name="usernickname">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="239" parent="234" name="spouseId">
+    <column id="247" parent="235" name="spouseId">
       <Position>5</Position>
       <DataType>bigint(10)|0s</DataType>
     </column>
-    <key id="240" parent="234" name="PRIMARY">
+    <key id="248" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userid</ColNames>
       <Primary>1</Primary>

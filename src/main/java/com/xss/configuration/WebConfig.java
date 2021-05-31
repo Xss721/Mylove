@@ -3,10 +3,9 @@ package com.xss.configuration;
 
 import com.xss.interceptor.loginInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.*;
 
-//@Configuration
+@Configuration
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

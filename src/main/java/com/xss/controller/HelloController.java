@@ -47,7 +47,7 @@ public class HelloController {
                              HttpSession session,
                              RedirectAttributes attributes) {
 //        System.out.println(String.valueOf(loginService.selectByUsername(username)));
-        if (loginService.selectByUsername(username)!=0 || !password2.equals(password)) {
+        if (loginService.selectByUsername(username) != 0 || !password2.equals(password)) {
             attributes.addFlashAttribute("msg", "密码不一致或用户名不可用");
         } else {
             loginService.AddNewUser(username, password);
@@ -56,8 +56,4 @@ public class HelloController {
         return "redirect:/login";
     }
 
-    @GetMapping("/index")
-    public String returnindex() {
-        return "index";
-    }
 }

@@ -20,7 +20,7 @@ public class loginInterceptor extends HandlerInterceptorAdapter {
         log.info("来到了拦截器");
         if (request.getSession().getAttribute("user") == null) {
             request.setAttribute("msg","请先登录");
-            request.getRequestDispatcher("/login").forward(request,response);
+            request.getRequestDispatcher("/").forward(request,response);
             return false;
         }
         return true;
